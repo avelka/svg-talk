@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Inspire.js: A brief introduction</title>
+
+	<link href="inspire.css" rel="stylesheet" />
+	<link href="theme.css" rel="stylesheet" />
+	<link href="talk.css" rel="stylesheet" />
+</head>
+<body class="language-markup" data-prism-plugins="normalize-whitespace">
+
+<header id="intro" class="slide">
+	<h1>
+		Playing with SVG
+	</h1>
+</header>
+<section>
+	<header class="slide">
+		<h1>Introduction</h1>
+	</header>
+
+	<article class="slide" title="SVG: Introduction">
+		<h1>Basics</h1>
+
+		<ul class="delayed-children">
+			<li>XML-based markup</li>
+			<li>since 1999</li>
+			<li>Vector graphic</li>
+			<li>Play nicely with (some) CSS</li>
+			<li>Can be animated (JS, CSS or even SMIL)!</li>
+		</ul>
+	</article>
+
+	<article class="slide" title="Typical usages">
+		<h1>Typical usages</h1>
+		<ul class="delayed-children">
+			<li>Icons</li>
+			<li>Logos</li>
+			<li>Cliping / paths definition</li>
+			<li>Simple graphics</li>
+			<li><s>Text</s></li>
+			<li><s>Raster image</s></li>
+		</ul>
+	</article>
+</section>
+
+<section>
+	<header class="slide">
+		<h1>Syntax</h1>
+	</header>
+	<article class="slide">
+		<h1>Walkthrough</h1>
+		<ul class="delayed-children">
+			<li>SVG Element</li>
+			<li>Shapes</li>
+			<li>Groups and Inheritance</li>
+			<li>fill-rule</li>
+			<li>clip-rule</li>
+		</ul>
+	</article>
+	<article class="demo slide" title="SVG Element">
+		<textarea class="language-html">
+			<svg
+			viewbox="0 0 100 40" width="500" height="100"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink">
+			<a xlink:href="https://google.com">
+			<text x="10" y="20" font-size="10" text-anchor="middle">
+			google</text></a>
+		</svg>
+		</textarea>
+		<textarea class="language-css">
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: silver;
+				height: 100%;
+				width: 100%;
+			}
+			svg {
+				background: white;
+			}
+		</textarea>
+	</article>
+	<article class="demo slide" title="Shapes">
+		<textarea class="language-html">
+		<svg viewbox="0 0 100 40" width="500" height="100" >
+			<rect x="10" y="10" width="10" height="10" fill="crimson"/>
+			<circle cx="40" cy="10" r="10" fill="gold"/>
+			<text x="10" y="30" font-size="10">
+				Live demo!
+			</text>
+			<path
+			fill="red"
+			style="transform: translateX(60px)"
+			d="M4.5 0H5.5V1H14.5V0H15.5V1H20V5V6V16H0V6V5V1H4.5V0ZM14.5 2V3H15.5V2H19V5H1.00263V2H4.5V3H5.5V2H14.5ZM1.00263 6V15H19V6H1.00263Z"
+			/>
+		</svg>
+		</textarea>
+		<textarea class="language-css">
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: silver;
+				height: 100%;
+				width: 100%;
+			}
+			svg {
+				background: white;
+			}
+		</textarea>
+	</article>
+	<article class="demo slide" title="Group and Inheritance">
+		<textarea class="language-html">
+		<div class="container">
+		<p>I have a color</p>
+		<svg
+			width="300"
+			height="300"
+			viewBox="0 0 20 20"
+			fill="currentColor">
+			<path
+				d="M4.5 
+				0H5.5V1H14.5V0H15.5V1H20V5V6V16H0V6V5V1H4.5V0ZM14.5
+				2V3H15.5V2H19V5H1.00263V2H4.5V3H5.5V2H14.5ZM1.00263 
+				6V15H19V6H1.00263Z"
+				fill="#333333"
+			/>
+			
+			<!-- <rect x="10" y="10" width="10" height="10"/> -->
+		</svg>
+		</div>
+		</textarea>
+		<textarea class="language-css">
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: white;
+				height: 100%;
+				width: 100%;
+				color: limegreen;
+			}
+			svg {
+				background: white;
+			}
+		</textarea>
+	</article>
+	<article class="demo slide" title="fill-rule">
+		<textarea class="language-html">
+			<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 20 20" fill="currentColor">
+			<path
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M4.5 0H5.5V1H14.5V0H15.5V1H20V5V6V16H0V6V5V1H4.5V0ZM14.5 2V3H15.5V2H19V5H1.00263V2H4.5V3H5.5V2H14.5ZM1.00263 6V15H19V6H1.00263Z"
+			/>
+			</svg>
+			<!--<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 20 20" fill="currentColor">
+			<path
+				fill-rule="evenodd"
+				d="M4.5 0H5.5V1H14.5V0H15.5V1H20V5V6V16H0V6V5V1H4.5V0ZM14.5 2V3H15.5V2H19V5H1.00263V2H4.5V3H5.5V2H14.5ZM1.00263 6V15H19V6H1.00263Z"
+			/>
+			</svg>-->
+			<!--<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 20 20" fill="currentColor">
+			<path
+				d="M4.5 0H5.5V1H14.5V0H15.5V1H20V5V6V16H0V6V5V1H4.5V0ZM14.5 2V3H15.5V2H19V5H1.00263V2H4.5V3H5.5V2H14.5ZM1.00263 6V15H19V6H1.00263Z"
+			/>
+			</svg>-->
+		</textarea>
+		<textarea class="language-css">
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: silver;
+				height: 100%;
+				width: 100%;
+			}
+			svg {
+				background: white;
+			}
+		</textarea>
+	</article>
+	<article class="demo slide" title="clip-rule">
+		<textarea class="language-html">
+			<svg width="300" height="240" viewBox="0 0 25 20" fill="currentColor"> 
+				<g opacity="0.25">
+				<path
+				    d="M14.8278 3.71094C14.3637 4.1239 14.0052 4.6659 13.8151 5.30283C13.4056 6.67501 13.8945 8.0969 14.9414 8.9447L12.5509 16.9549C12.2663 17.9087 12.8087 18.9075 13.7625 19.1858C14.7163 19.4642 15.7202 18.9166 16.0049 17.9628L16.3386 16.8447L16.6603 15.7667L18.5607 9.39863C19.4407 8.99718 20.1493 8.23355 20.4464 7.23803C20.9907 5.41392 19.9476 3.50199 18.1164 2.9676C17.4844 2.78317 16.8412 2.78692 16.2473 2.94592L16.4501 3.31292L17.8813 5.84925L17.4427 6.64917L16.508 6.60498L15.0732 4.15497L14.8278 3.71094ZM17.8683 8.68462C18.6579 8.44319 19.3145 7.82489 19.5663 6.9812C19.9647 5.64634 19.2021 4.24113 17.8538 3.84764C17.827 3.83984 17.8002 3.83249 17.7735 3.8256L18.8061 5.60961L18.935 5.83223L18.8107 6.05893L18.1089 7.33884L17.97 7.59214L17.6819 7.57852L16.2101 7.50895L15.9613 7.49718L15.8368 7.28241L14.7476 5.40282C14.7285 5.45418 14.7111 5.50647 14.6952 5.55966C14.3435 6.73794 14.8965 7.97104 15.9584 8.51473L15.9501 8.54239L16.0166 8.54732L13.431 17.2117C13.2914 17.6794 13.5574 18.1693 14.0251 18.3058C14.4929 18.4423 14.9852 18.1738 15.1248 17.706L15.7801 15.5103L17.0955 11.0913L17.7802 8.79121C17.7872 8.75376 17.7918 8.71633 17.7939 8.6791L17.8683 8.68462Z"
+				  />
+				  <path
+				    d="M13.4737 3.651C13.6054 3.36038 13.7674 3.09053 13.9546 2.84406C13.013 2.63484 11.8734 2.5 10.5 2.5C4.37434 2.5 2.9 5.18235 2.9 5.18235V7.86471C2.9 7.86471 1.60082 7.86414 1.475 7.86471C1.32614 7.86537 1 7.97726 1 8.31347V17.7H12.101C11.9916 17.4191 11.9327 17.1171 11.9319 16.8081C8.5082 16.8075 4.46306 16.8063 4.325 16.8061C4.2288 16.806 3.85 16.7296 3.85 16.3608V10.9961C3.85 10.6871 4.15108 10.5479 4.325 10.5473C4.44412 10.5469 10.1283 10.5477 13.7432 10.5483L14.0183 9.65534C10.4386 9.65502 4.49289 9.65323 4.325 9.65302C4.19482 9.65285 3.85 9.74589 3.85 10.1001V5.43046C3.85 5.43046 5.22455 3.39248 10.5 3.39248C11.6756 3.39248 12.6575 3.49369 13.4737 3.651ZM18.1 13.4028L16.8347 17.5093C16.8147 17.5743 16.7923 17.6379 16.7676 17.7H20V8.87849C19.8047 9.01539 19.5983 9.1356 19.3832 9.23788L19.05 10.3194V16.8056H18.1V13.4028ZM1.94999 8.7585H2.9V16.8056H1.94999V8.7585Z"
+				  />
+				  </g>
+				<g clip-path="url(#clip0_example_2)">
+				  <path
+				    d="M14.8278 3.71094C14.3637 4.1239 14.0052 4.6659 13.8151 5.30283C13.4056 6.67501 13.8945 8.0969 14.9414 8.9447L12.5509 16.9549C12.2663 17.9087 12.8087 18.9075 13.7625 19.1858C14.7163 19.4642 15.7202 18.9166 16.0049 17.9628L16.3386 16.8447L16.6603 15.7667L18.5607 9.39863C19.4407 8.99718 20.1493 8.23355 20.4464 7.23803C20.9907 5.41392 19.9476 3.50199 18.1164 2.9676C17.4844 2.78317 16.8412 2.78692 16.2473 2.94592L16.4501 3.31292L17.8813 5.84925L17.4427 6.64917L16.508 6.60498L15.0732 4.15497L14.8278 3.71094ZM17.8683 8.68462C18.6579 8.44319 19.3145 7.82489 19.5663 6.9812C19.9647 5.64634 19.2021 4.24113 17.8538 3.84764C17.827 3.83984 17.8002 3.83249 17.7735 3.8256L18.8061 5.60961L18.935 5.83223L18.8107 6.05893L18.1089 7.33884L17.97 7.59214L17.6819 7.57852L16.2101 7.50895L15.9613 7.49718L15.8368 7.28241L14.7476 5.40282C14.7285 5.45418 14.7111 5.50647 14.6952 5.55966C14.3435 6.73794 14.8965 7.97104 15.9584 8.51473L15.9501 8.54239L16.0166 8.54732L13.431 17.2117C13.2914 17.6794 13.5574 18.1693 14.0251 18.3058C14.4929 18.4423 14.9852 18.1738 15.1248 17.706L15.7801 15.5103L17.0955 11.0913L17.7802 8.79121C17.7872 8.75376 17.7918 8.71633 17.7939 8.6791L17.8683 8.68462Z"
+				  />
+				  <path
+				    d="M13.4737 3.651C13.6054 3.36038 13.7674 3.09053 13.9546 2.84406C13.013 2.63484 11.8734 2.5 10.5 2.5C4.37434 2.5 2.9 5.18235 2.9 5.18235V7.86471C2.9 7.86471 1.60082 7.86414 1.475 7.86471C1.32614 7.86537 1 7.97726 1 8.31347V17.7H12.101C11.9916 17.4191 11.9327 17.1171 11.9319 16.8081C8.5082 16.8075 4.46306 16.8063 4.325 16.8061C4.2288 16.806 3.85 16.7296 3.85 16.3608V10.9961C3.85 10.6871 4.15108 10.5479 4.325 10.5473C4.44412 10.5469 10.1283 10.5477 13.7432 10.5483L14.0183 9.65534C10.4386 9.65502 4.49289 9.65323 4.325 9.65302C4.19482 9.65285 3.85 9.74589 3.85 10.1001V5.43046C3.85 5.43046 5.22455 3.39248 10.5 3.39248C11.6756 3.39248 12.6575 3.49369 13.4737 3.651ZM18.1 13.4028L16.8347 17.5093C16.8147 17.5743 16.7923 17.6379 16.7676 17.7H20V8.87849C19.8047 9.01539 19.5983 9.1356 19.3832 9.23788L19.05 10.3194V16.8056H18.1V13.4028ZM1.94999 8.7585H2.9V16.8056H1.94999V8.7585Z"
+				  />
+				</g>
+				<defs>
+				  <clipPath id="clip0_example_2">
+				      <rect width="15" height="20"/>
+				  </clipPath>
+				</defs>
+			</svg>
+		</textarea>
+		<textarea class="language-css">
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: silver;
+				height: 100%;
+				width: 100%;
+			}
+			svg {
+				background: white;
+			}
+		</textarea>
+	</article>
+	<article class="slide">
+		<h1>Hidden in plain sight</h1>
+		<img src="/assets/inception.jpeg"/>
+	</article>
+	<article class="slide">
+		<h1>Hidden in plain sight 2</h1>
+		<img src="/assets/sepa-logo.png"/>
+	</article>
+</section>
+<section>
+	<header class="slide">
+		<h1>Day to day</h1>
+	</header>
+	<article class="slide">
+		<h1>Optimisation</h1>
+		<ul>
+			<li>SVGO: <a href="https://github.com/svg/svgo" target="_blank">github</a></li>
+			<li>SVGOMG: <a href="https://jakearchibald.github.io/svgomg/" target="_blank">app</a></li>
+			<li>SVGR: <a href="https://react-svgr.com/" target="_blank">react-svgr.com</a></li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Export from figma</h1>
+		<img src="/assets/figma-export.png"/>
+		<ul class="delayed-children">
+			<li><a href="https://www.figma.com/file/QhtuMOlQvoWfMn0Xw5tXJe/Design-System?node-id=2716%3A8149">from figma</a></li>
+		</ul>
+	</article>
+</section>
+
+<footer class="slide" title="The End">
+	<h1>Thank you!</h1>
+	<p>Blogpost (with a lot of links)<a href="https://read.avelka.com/posts/Introduction_to_SVG/">Introduction to SVG</a></p>
+	<p>Slide framework: <a href="https://github.com/LeaVerou/inspire.js">github.com/LeaVerou/inspire.js</a></p>
+</footer>
+
+<script src="inspire.mjs" type="module"></script>
+
+</body>
+</html>
